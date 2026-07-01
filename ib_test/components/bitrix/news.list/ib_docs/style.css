@@ -1,0 +1,143 @@
+.ib-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 900px;
+}
+
+.accordion-item {
+    transition: background 0.3s ease;
+    padding: 0; /* Отступы переносим внутрь для корректной анимации */
+}
+
+/* Шапка аккордеона */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordion-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Кнопка плюс/минус */
+.accordion-toggle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon-plus {
+    position: relative;
+    width: 12px;
+    height: 12px;
+}
+
+.icon-plus::before, .icon-plus::after {
+    content: '';
+    position: absolute;
+    background-color: var(--text-main);
+    transition: transform 0.3s ease;
+}
+
+.icon-plus::before {
+    top: 5px; left: 0; width: 12px; height: 2px;
+}
+
+.icon-plus::after {
+    top: 0; left: 5px; width: 2px; height: 12px;
+}
+
+/* Анимация крестика в минус при активном классе */
+.accordion-item.active .icon-plus::after {
+    transform: rotate(90deg) scale(0);
+}
+.accordion-item.active .accordion-toggle-btn {
+    background: var(--accent-blue);
+    border-color: #4facfe;
+}
+
+/* Магия анимации высоты на CSS Grid */
+.accordion-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.accordion-content {
+    overflow: hidden; /* Важно для скрытия контента */
+}
+
+/* Список документов */
+.docs-list {
+    padding: 0 var(--space-lg) var(--space-lg) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.doc-row {
+    display: flex;
+    align-items: center;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--glass-border);
+    gap: var(--space-md);
+}
+
+.doc-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.doc-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.doc-name {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.doc-name:hover {
+    color: #4facfe;
+}
+
+.doc-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.doc-download {
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.2s;
+    display: flex;
+}
+
+.doc-download:hover {
+    background: var(--accent-blue);
+    transform: translateY(-2px);
+}
