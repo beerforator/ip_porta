@@ -1,0 +1,61 @@
+.ib-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Трек со слайдами. Магия scroll-snap! */
+.ib-slider-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Привязка прокрутки к карточкам */
+    scrollbar-width: none; /* Прячем скроллбар в Firefox */
+    padding-bottom: 20px; /* Тень карточек не обрежется */
+    scroll-behavior: smooth;
+}
+.ib-slider-track::-webkit-scrollbar {
+    display: none; /* Прячем скроллбар в Chrome/Safari */
+}
+
+/* Сам слайд */
+.ib-slide {
+    min-width: 300px;
+    max-width: 300px;
+    scroll-snap-align: start; /* Точка прилипания */
+    display: flex; flex-direction: column;
+    text-decoration: none;
+    padding: 0; overflow: hidden;
+    transition: transform 0.3s;
+}
+.ib-slide:hover {
+    transform: translateY(-5px);
+    border-color: #4facfe;
+}
+.slide-img {
+    height: 160px; width: 100%;
+    background-size: cover; background-position: center;
+}
+.slide-content { padding: 20px; }
+.slide-title {
+    color: var(--text-main); font-size: 16px; font-weight: bold; line-height: 1.4;
+}
+
+/* Кнопки управления */
+.slider-btn {
+    position: absolute;
+    top: 50%; transform: translateY(-70%);
+    z-index: 10;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; font-size: 20px; cursor: pointer; transition: 0.3s;
+}
+.slider-btn:hover { background: #4facfe; border-color: #4facfe; }
+.prev-btn { left: -24px; }
+.next-btn { right: -24px; }
+
+/* На мобильных прячем стрелки, оставляем только свайп пальцем */
+@media(max-width: 768px) {
+    .slider-btn { display: none; }
+}
