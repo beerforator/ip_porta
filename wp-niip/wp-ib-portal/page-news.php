@@ -48,7 +48,7 @@ echo '<h1>' . get_the_title() . '</h1>';
         </div>
     <?php else : ?>
         <div class="glass-panel" style="padding: var(--space-lg); text-align: center;">
-            <p>Новостей пока нет. Добавьте их через админ-панель (Новости ИБ).</p>
+            <p>Новостей пока нет.</p>
         </div>
     <?php endif;
     wp_reset_postdata();

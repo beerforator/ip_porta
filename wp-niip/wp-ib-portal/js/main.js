@@ -198,6 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             const total = currentTest.questions.length;
+            sendResult(userName, currentTest.id, currentTest.name, score, total);
+            console.log(userName, currentTest.id, score, total);
             content.innerHTML = `
                 <div class="quiz-step active" style="text-align:center;">
                     <h2 style="margin-top:0">Тест завершен</h2>
@@ -207,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             document.getElementById('quiz-finish-btn').addEventListener('click', () => overlay.classList.remove('active'));
-            sendResult(userName, currentTest.id, currentTest.name, score, total);
+
         }
     }
 
@@ -236,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('name', name);
         formData.append('testName', testName);
         formData.append('score', score + ' из ' + total);
+
+        console.log(formData);
 
         fetch(ibAjax.ajaxurl, {
             method: 'POST',

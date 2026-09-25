@@ -124,7 +124,7 @@ echo '<h1>' . get_the_title() . '</h1>';
         </div>
     <?php else : ?>
         <div class="glass-panel" style="padding: var(--space-lg); text-align: center;">
-            <p>Документов пока нет. Добавьте их через админ-панель (Документы ИБ).</p>
+            <p>Документов пока нет.</p>
         </div>
     <?php endif; ?>
 </div>

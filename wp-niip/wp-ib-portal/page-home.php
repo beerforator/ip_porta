@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <div class="glass-panel" style="padding: var(--space-xl) var(--space-lg); text-align: center; margin-top: var(--space-lg);">
-    <h1 style="margin-top: 0; font-size: 36px; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">На страже ваших данных</h1>
+    <h1 style="margin-top: 0; font-size: 36px; background: linear-gradient(135deg, #7583c7 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">На страже ваших данных</h1>
     <p style="color: var(--text-muted); font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6;">
         Добро пожаловать на корпоративный портал отдела ИБ. Здесь вы найдете актуальные регламенты, обучающие материалы и инструменты для безопасной работы в сети компании.
     </p>
@@ -15,21 +15,21 @@ get_header();
 
 <div class="hero-links">
     <a href="<?php echo home_url('/password/'); ?>" class="hero-link-card glass-panel">
-        <div class="hero-link-icon">🔑</div>
+<!--         <div class="hero-link-icon">🔑</div> -->
         <div>
             <div style="font-weight: bold; font-size: 16px;">Генератор паролей</div>
             <div style="font-size: 12px; color: var(--text-muted);">Создать надежный пароль</div>
         </div>
     </a>
     <a href="<?php echo home_url('/memo/'); ?>" class="hero-link-card glass-panel">
-        <div class="hero-link-icon">🛡️</div>
+<!--         <div class="hero-link-icon">🛡️</div> -->
         <div>
             <div style="font-weight: bold; font-size: 16px;">Памятка ИБ</div>
             <div style="font-size: 12px; color: var(--text-muted);">Базовые правила защиты</div>
         </div>
     </a>
     <a href="<?php echo home_url('/polls/'); ?>" class="hero-link-card glass-panel">
-        <div class="hero-link-icon">📝</div>
+<!--         <div class="hero-link-icon">📝</div> -->
         <div>
             <div style="font-weight: bold; font-size: 16px;">Тестирование</div>
             <div style="font-size: 12px; color: var(--text-muted);">Проверка знаний</div>
@@ -46,14 +46,14 @@ get_header();
     <?php
     $slider_query = new WP_Query([
         'post_type'      => 'ib_news',
-        'posts_per_page' => 6,
+        'posts_per_page' => 4,
         'orderby'        => 'date',
         'order'          => 'DESC',
     ]);
 
     if ($slider_query->have_posts()) : ?>
         <div class="ib-slider-wrapper">
-            <button class="slider-btn prev-btn" id="slider-prev">&larr;</button>
+<!--             <button class="slider-btn prev-btn" id="slider-prev">&larr;</button> -->
             <div class="ib-slider-track" id="slider-track">
                 <?php while ($slider_query->have_posts()) : $slider_query->the_post(); ?>
                     <a href="<?php echo home_url('/news/'); ?>" class="ib-slide glass-panel">
@@ -69,11 +69,11 @@ get_header();
                     </a>
                 <?php endwhile; ?>
             </div>
-            <button class="slider-btn next-btn" id="slider-next">&rarr;</button>
+<!--             <button class="slider-btn next-btn" id="slider-next">&rarr;</button> -->
         </div>
     <?php else : ?>
         <div class="glass-panel" style="padding: var(--space-lg); text-align: center;">
-            <p>Новостей пока нет. Добавьте их через админ-панель (Новости ИБ).</p>
+            <p>Новостей пока нет.</p>
         </div>
     <?php endif;
     wp_reset_postdata();

@@ -142,8 +142,8 @@ function ib_register_post_types() {
 
 add_action('wp_enqueue_scripts', 'ib_enqueue_assets');
 function ib_enqueue_assets() {
-    wp_enqueue_style('ib-style', get_stylesheet_uri(), [], '1.0');
-    wp_enqueue_script('ib-main', get_template_directory_uri() . '/js/main.js', [], '1.0', true);
+    wp_enqueue_style('ib-style', get_stylesheet_uri());
+    wp_enqueue_script('ib-main', get_template_directory_uri() . '/js/main.js', true);
     wp_localize_script('ib-main', 'ibAjax', [
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('ib_poll_nonce'),
@@ -189,3 +189,5 @@ function ib_format_bytes($bytes) {
     $pow = min($pow, count($units) - 1);
     return round($bytes / pow(1024, $pow), 2) . ' ' . $units[$pow];
 }
+
+add_filter('acf/settings/remove_wp_meta_box', '__return_false');
